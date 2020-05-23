@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>ToDoアプリ</title>
+   <link rel="stylesheet" href="css.css">
+</head>
+<body>
+   <div id="app">
+      <h1>ToDoアプリ練習</h1>
+      <ul>
+         <li v-for="item in items">
+            <label v-bind:class="{ done: item.isChecked }">
+               <input type="checkbox"
+                      v-model="item.isChecked"
+                      v-on:change="saveTodo">
+               {{ item.title}}
+            </label>
+         </li>
+      </ul>
+      <p>
+         <input type="text"
+            placeholder="Todoを入力しよう"
+            v-model="newItemTitle"
+            @keyup.enter="say"
+            @keypress="setCanMessageSubmit">
+         <button @click="addTodo" class="addButton">追加</button>
+         <div class="delete">
+            <button @click="deleteTodo" class="deleteButton">チェック済みを削除する</button>
+         </div>
+      </p>
+   </div>
+   
+   
+   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+   <script src="js.js"></script>
+</body>
+</html>
